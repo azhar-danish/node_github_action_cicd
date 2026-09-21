@@ -7,7 +7,7 @@ const PORT = process.env.PORT;
 app.get('/',(req,res)=>{
     // res.status(200).send({message : 'welcome back to my api'})
 
-    res.send("Github Action CI/CD for Node.js Application is working fine! :D")
+    res.send("Github Action CI/CD for Node.js Application is working fine!")
 });
 
 app.listen(PORT,()=>{
