@@ -4,9 +4,14 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT;
 
-app.get('/',(req,res)=>{
-    // res.status(200).send({message : 'welcome back to my api'})
+app.use(express.json());
 
+app.get('/health',(req,res)=>{
+    res.send("Server is healthy and running fine!")
+});
+
+app.get('/',(req,res)=>{
+    console.log("Github Action CI/CD for Node.js Application is working fine!")
     res.send("Github Action CI/CD for Node.js Application is working fine!")
 });
 
