@@ -8,8 +8,9 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.get('/health', (req, res) => {
-    res.send("Server is healthy and running fine!");
+
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok", message: "Service is healthy", uptime: process.uptime() });
 });
 
 app.get('/', (req, res) => {
