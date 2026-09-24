@@ -21,5 +21,4 @@ jobs:
                 script: |
                   cd /home/ubuntu/node_github_action_cicd
                   git pull origin main
-                  npm install
-                  npm start                
+                  docker-compose up -d --build              
