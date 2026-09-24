@@ -14,7 +14,7 @@ app.get("/health", (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    console.log("Github Action CI/CD for Node.js Application is working fine! 123");
+    console.log("Github Action CI/CD for Node.js Application is working fine! 123456");
     res.send("Github Action CI/CD for Node.js Application is working fine!");
 });
 
