@@ -25,7 +25,7 @@ app.get('/about', (req, res) => {
 
 app.get('/home', (req, res) => {
     console.log("Home page is working fine!");
-    res.send("Home page is working fine!");
+    res.send("Home page is working fine .more data will be added soon!");
 });
 
 app.listen(PORT, '0.0.0.0', () => {
