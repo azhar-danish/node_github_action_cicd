@@ -1,0 +1,22 @@
+{
+  "family": "node-app-tasks",
+  "networkMode": "awsvpc",
+  "executionRoleArn": "arn:aws:iam::024901689513:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "node-app-container",
+      "image": "024901689513.dkr.ecr.ap-south-1.amazonaws.com/dev/node-app:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 3000,
+          "hostPort": 3000,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  ],
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "1024",
+  "memory": "2048"
+}

@@ -28,6 +28,11 @@ app.get('/home', (req, res) => {
     res.send("Home page is working fine .more data will be added soon!");
 });
 
+app.get('/gallery', (req, res) => {
+    console.log("Gallery page is working fine!");
+    res.send("Gallery page is working fine .more data will be added soon!");
+});
+
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on PORT: ${PORT}`);
 });
