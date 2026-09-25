@@ -1,24 +1,39 @@
-name: CI_Workflow
-
+name: Build and Deploy NodeJS App on AWS
 on:
   push:
     branches:
-      - main
-
+    - main
+  
 jobs:
-  deploy:
+  Build-App:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to EC2
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.EC2_SSH_KEY }}
+      - uses: actions/checkout@v5    
 
-          script: |
-            cd ${{ secrets.PROJECT_PATH }}
-            sudo docker compose down
-            git pull origin main
-            sudo docker compose up -d --build
+      - name: Build the Docker Image
+        run: |
+         docker build . --tag 024901689513.dkr.ecr.ap-south-1.amazonaws.com/dev/node-app:latest
+         
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-south-1 
+
+      - name: Login to Amazon Elastic Container Registry
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Push the Image to AWS ECR
+        run: |
+            docker push 024901689513.dkr.ecr.ap-south-1.amazonaws.com/dev/node-app:latest
+
+      - name: Revisions on ECS with Updated Docker Images
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ecs-task.json
+          service: dev-node-app-TD-service
+          cluster: node-app-dev
+          wait-for-service-stability: true        
