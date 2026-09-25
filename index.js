@@ -33,6 +33,13 @@ app.get('/gallery', (req, res) => {
     res.send("Gallery page is working fine .more data will be added soon!");
 });
 
+
+app.get('/user', (req, res) => {
+    console.log("User page is working fine!");
+    res.send("User page is working fine .more data will be added soon!");
+});
+
+
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on PORT: ${PORT}`);
 });
