@@ -35,5 +35,5 @@ jobs:
         with:
           task-definition: ecs-task.json
           service: dev-node-app-TD-service
-          cluster: node-app-dev
+          cluster: dev-node-app-cluster
           wait-for-service-stability: true        
