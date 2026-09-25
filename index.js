@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 
 app.get('/about', (req, res) => {
     console.log("About page is working fine!");
-    res.send("About page is working fine!");
+    res.send("About page is working fine! New data will be added soon!");
 });
 
 app.get('/home', (req, res) => {
