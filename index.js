@@ -23,6 +23,10 @@ app.get('/about', (req, res) => {
     res.send("About page is working fine!");
 });
 
+app.get('/home', (req, res) => {
+    console.log("Home page is working fine!");
+    res.send("Home page is working fine!");
+});
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on PORT: ${PORT}`);
